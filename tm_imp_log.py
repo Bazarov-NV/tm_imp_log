@@ -3,8 +3,8 @@ import re
 
 __version__ = "1.0.2"
 
-TELEGRAM_BOT_TOKEN = "8472435837:AAGabLc-Hlp5V9a-iJ6Nf-6cfZT9TH-h4Yk"  # !заменить! Telegrам bot's token 
-TELEGRAM_CHAT_ID = "7290071868"    # !заменить! Telegram chat ID
+TELEGRAM_BOT_TOKEN = ""  # !заменить! Telegrам bot's token 
+TELEGRAM_CHAT_ID = ""    # !заменить! Telegram chat ID
 ERROR_FILE_PATH = "teammaster_imp.exe.log"       # Путь к файлу лога
 POSITION_ERROR_FILE = 'pos_err.txt' # Файл, где запоминаем последнюю обработанную строку лога, чтобы не дублировать сообщения 
 
@@ -74,4 +74,5 @@ def analyze_and_send_errors(file_path):
             print(f"An unexpected error occurred: {e}")
         f.close()  
 if __name__ == "__main__":
+
         analyze_and_send_errors(ERROR_FILE_PATH)
