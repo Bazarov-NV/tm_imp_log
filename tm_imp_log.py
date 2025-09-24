@@ -2,8 +2,8 @@ import requests
 import re
 
 
-TELEGRAM_BOT_TOKEN = "8341323223:AAFiBauHL7nmn6CWPh4MQ6opkvxMTwGSXT0"  # !заменить! Telegrам bot's token 
-TELEGRAM_CHAT_ID = "7290071868"    # !заменить! Telegram chat ID
+TELEGRAM_BOT_TOKEN = ""  # !заменить! Telegrам bot's token 
+TELEGRAM_CHAT_ID = ""    # !заменить! Telegram chat ID
 ERROR_FILE_PATH = ".\\teammaster_imp.exe.log"       # Путь к файлу лога
 POSITION_ERROR_FILE = 'pos_err.txt' # Файл, где запоминаем последнюю обработанную строку лога, чтобы не дублировать сообщения 
 
