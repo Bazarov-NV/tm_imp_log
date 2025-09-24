@@ -1,11 +1,10 @@
 import requests
 import re
 
-__version__ = "1.0.2"
 
-TELEGRAM_BOT_TOKEN = ""  # !заменить! Telegrам bot's token 
-TELEGRAM_CHAT_ID = ""    # !заменить! Telegram chat ID
-ERROR_FILE_PATH = "teammaster_imp.exe.log"       # Путь к файлу лога
+TELEGRAM_BOT_TOKEN = "8341323223:AAFiBauHL7nmn6CWPh4MQ6opkvxMTwGSXT0"  # !заменить! Telegrам bot's token 
+TELEGRAM_CHAT_ID = "7290071868"    # !заменить! Telegram chat ID
+ERROR_FILE_PATH = ".\\teammaster_imp.exe.log"       # Путь к файлу лога
 POSITION_ERROR_FILE = 'pos_err.txt' # Файл, где запоминаем последнюю обработанную строку лога, чтобы не дублировать сообщения 
 
 def send_telegram_message(message):
@@ -29,6 +28,9 @@ def get_line_pos_errors(file_pos):
      except FileNotFoundError:
           f = open(file_pos, "w") 
           f.write("0")
+          f.close()
+          f = open(file_pos) 
+
      s1 = f.read()
      try:
        pos_err = s1.strip()      
@@ -47,13 +49,16 @@ def write_line_pos_errors(file_pos, pos_err):
 def analyze_and_send_errors(file_path):
         errors = []     
         pos_err = get_line_pos_errors (POSITION_ERROR_FILE)
-        
         try:
             f = open(file_path, 'r')                                                
             list_errors = f.readlines()
             f.close
             num_lines = len(list_errors)   
-            k2 = list_errors.index(pos_err+"\n") + 2
+
+            try:
+              k2 = list_errors.index(pos_err+"\n") + 2
+            except:
+              k2 = 0 
 
             if k2 > num_lines: k2 = num_lines
             while k2 != num_lines: 
@@ -74,5 +79,4 @@ def analyze_and_send_errors(file_path):
             print(f"An unexpected error occurred: {e}")
         f.close()  
 if __name__ == "__main__":
-
         analyze_and_send_errors(ERROR_FILE_PATH)
